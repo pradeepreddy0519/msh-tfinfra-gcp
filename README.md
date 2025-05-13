@@ -14,7 +14,6 @@ Terraform - Required for defining and deploying infrastructure as code.
 
 ## 📁 Folder Structure
 
-.
 ├── statefile/ # Creates the GCS bucket for backend state storage
 │ ├── main.tf
 │ └── output.tf
