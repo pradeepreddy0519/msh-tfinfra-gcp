@@ -32,17 +32,16 @@ Terraform - Required for defining and deploying infrastructure as code.
 ├── apply.sh # Script to deploy everything
 ├── destroy.sh # Script to destroy all resources
 ├── function.zip # Source code for Cloud Function
-└── README.md
 
 Scripts
 
-apply.sh: This script provisions the GCP infrastructure. It will create a Cloud Storage Bucket to store the Terraform state.Set up Cloud Functions.Create a Load Balancer.
+apply.sh: This script provisions the GCP infrastructure. It will create a Cloud Storage Bucket to store the Terraform state. Set up Cloud Functions. Create a Load Balancer.
 
-destroy.sh This script will destroy all resources that were created by deploy.sh. This is useful for cleaning up your GCP project after the infrastructure is no longer needed.
+destroy.sh This script will destroy all resources created by deploy.sh. It is useful for cleaning up your GCP project after the infrastructure is no longer needed.
 
 How to Execute
 
-Step 1: Set the Project Name For all scripts (apply.sh, destroy.sh), you will need to specify your project_name and bucket_name. Set the project name by modifying the project_name and bucket_name variable in each of the scripts.
+Step 1: Set the Project Name. For all scripts (apply.sh, destroy.sh), you will need to specify your project_name and bucket_name. You can set the project name by modifying the project_name and bucket_name variables in each script.
 
 Update inside the script PROJECT_NAME="your-project-id" and BUCKET_NAME="unique_name"
 
@@ -52,7 +51,7 @@ Run the apply.sh script to create the infrastructure:
 
 ./apply.sh
 
-Wait for 5mins and run the command curl http://load_balancer_url
+Wait for 5 minutes and run the command curl http://load_balancer_url
 
 Destroying the Infrastructure:
 
