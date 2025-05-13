@@ -13,7 +13,7 @@ Google Cloud SDK (gcloud) - Used to authenticate and interact with GCP services.
 Terraform - Required for defining and deploying infrastructure as code.
 
 ## Folder Structure
-.
+```
 ├── statefile/                  # Creates the GCS bucket for backend state storage
 │   ├── main.tf
 │   └── output.tf
@@ -29,7 +29,7 @@ Terraform - Required for defining and deploying infrastructure as code.
 ├── apply.sh                    # Script to deploy everything
 ├── destroy.sh                  # Script to destroy all resources
 └── function.zip                # Source code for Cloud Function
-
+```
 
 Scripts
 
