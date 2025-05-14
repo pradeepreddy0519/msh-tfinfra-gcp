@@ -37,6 +37,8 @@ apply.sh: This script provisions the GCP infrastructure. It will create a Cloud 
 
 destroy.sh This script will destroy all resources created by deploy.sh. It is useful for cleaning up your GCP project after the infrastructure is no longer needed.
 
+secure.sh This script runs code quality checks with tflint and security vulnerability checks with tfsec on the Terraform code in the project.
+
 How to Execute
 
 Step 1: Set the Project Name. For all scripts (apply.sh, destroy.sh), you will need to specify your project_name and bucket_name. You can set the project name by modifying the project_name and bucket_name variables in each script.
@@ -56,3 +58,9 @@ Destroying the Infrastructure:
 When you're done and want to destroy the infrastructure, run the destroy.sh script:
 
 ./destroy.sh
+
+Running Security and Code Quality Checks:
+
+Run the secure_check.sh script to ensure the Terraform code adheres to quality and security standards:
+
+./secure_checks.sh
