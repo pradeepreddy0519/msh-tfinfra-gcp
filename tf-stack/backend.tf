@@ -10,7 +10,7 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket = "tf-state-file-planar"
+    bucket = "bucket_name"
     prefix = "terraform/state"
   }
 
