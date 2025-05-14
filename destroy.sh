@@ -4,6 +4,7 @@ set -e
 
 # Set project
 PROJECT_ID=""
+# created Bucket Name from apply.sh
 BUCKET_NAME=""
 
 echo "Destroying infrastructure..."

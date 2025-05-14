@@ -57,6 +57,8 @@ Destroying the Infrastructure:
 
 When you're done and want to destroy the infrastructure, run the destroy.sh script:
 
+Update inside the script PROJECT_ID="your-project-id" and BUCKET_NAME= "Use statefile bucket name as above input"
+
 ./destroy.sh
 
 Running Security and Code Quality Checks:
