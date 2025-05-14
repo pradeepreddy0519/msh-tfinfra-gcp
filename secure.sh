@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=""
+PROJECT_NAME="planar-night-455516-n3"
 
 # Validate project_name
 if [ -z "$PROJECT_NAME" ]; then

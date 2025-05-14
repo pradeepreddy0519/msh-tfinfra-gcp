@@ -41,9 +41,9 @@ secure.sh This script runs code quality checks with tflint and security vulnerab
 
 How to Execute
 
-Step 1: Set the Project Name. For all scripts (apply.sh, destroy.sh), you will need to specify your project_name and bucket_name. You can set the project name by modifying the project_name and bucket_name variables in each script.
+Step 1: Set the Project ID and Bucket Name. For all scripts (apply.sh, destroy.sh, sechure.sh), you will need to specify your project_ID and bucket_name in each script.
 
-Update inside the script PROJECT_NAME="your-project-id" and BUCKET_NAME="unique_name"
+Update inside the script PROJECT_ID="your-project-id" and BUCKET_NAME="unique_name"
 
 Step 2: Running the Scripts Deploying the Infrastructure:
 

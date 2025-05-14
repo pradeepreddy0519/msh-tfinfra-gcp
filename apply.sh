@@ -3,9 +3,10 @@
 set -e
 
 # Set your project
-PROJECT_ID=""
-BUCKET_NAME=""
-BACKEND_FILE="tf-modules/backend.tf"
+PROJECT_ID="your_project_id"
+# Set a Unique name for Bucket creatiom
+BUCKET_NAME="Unique_name"
+BACKEND_FILE="tf-stack/backend.tf"
 
 echo "Setting GCP project..."
 gcloud config set project $PROJECT_ID
@@ -30,7 +31,7 @@ else
 fi
 
 echo "Running Terraform init and apply for infrastructure..."
-cd tf-modules
+cd tf-stack
 terraform init
 terraform apply -auto-approve -var="project_id=${PROJECT_ID}" -var="bucket_name=${BUCKET_NAME}"
 cd ..

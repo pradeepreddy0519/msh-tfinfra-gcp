@@ -1,5 +1,5 @@
 module "gcs_bucket" {
-  source                 = "../tf-resources/storage"
+  source                 = "../modules/storage"
   project_id             = var.project_id
   region                 = var.region
   bucket_name            = var.bucket_name
@@ -8,7 +8,7 @@ module "gcs_bucket" {
 
 
 module "cloud_function" {
-  source                = "../tf-resources/cloudfunction"
+  source                = "../modules/cloudfunction"
   project_id            = var.project_id
   region                = var.region
   function_name         = var.function_name
@@ -21,7 +21,7 @@ module "cloud_function" {
 }
 
 module "lb" {
-  source              = "../tf-resources/load-balancer"
+  source              = "../modules/load-balancer"
   function_name       = module.cloud_function.function_name
   region              = var.region
   depends_on          = [ module.cloud_function ]
