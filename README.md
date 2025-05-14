@@ -63,4 +63,4 @@ Running Security and Code Quality Checks:
 
 Run the secure_check.sh script to ensure the Terraform code adheres to quality and security standards:
 
-./secure_checks.sh
+./secure.sh
