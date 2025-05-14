@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PROJECT_NAME="planar-night-455516-n3"
+PROJECT_IDE=""
 
 # Validate project_name
-if [ -z "$PROJECT_NAME" ]; then
+if [ -z "$PROJECT_ID" ]; then
   echo "Error: project_name is not set. Exiting."
   exit 1
 fi

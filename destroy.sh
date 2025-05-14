@@ -3,8 +3,8 @@
 set -e
 
 # Set project
-PROJECT_ID="planar-night-455516-n3"
-BUCKET_NAME="tf-state-file-planar"
+PROJECT_ID=""
+BUCKET_NAME=""
 
 echo "Destroying infrastructure..."
 cd tf-stack
