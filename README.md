@@ -1,3 +1,7 @@
+# **☁️ Google Cloud Function with Load Balancer (Terraform)**
+
+This project demonstrates how to deploy a Python **Cloud Function (1st Gen)** on Google Cloud using Terraform, expose it via an **HTTP Load Balancer**, and manage infrastructure using **Terraform**.
+
 **Prerequisites**:
 
 Before getting started, ensure the following are completed:
@@ -7,6 +11,8 @@ Before getting started, ensure the following are completed:
  2. You must have Editor or Owner permissions.
  3. Create a service account with the following roles (roles/editor, roles/storage.admin, roles/iam.serviceAccountUser)
  4. Download the JSON key for the service account.
+
+---
 
 **Required Tools**:
 
@@ -37,7 +43,29 @@ Terraform - Required for defining and deploying infrastructure as code.
    ```
    gcloud auth list
    gcloud config list
-   ```   
+   ```
+
+---
+
+   **🧠 Cloud Function Code**
+
+   **main.py**
+   ```
+   def hello_world(request):
+    return "Hello, World!"
+   ```
+
+   Responds only to the `Hello, World!` path.
+
+---
+
+##  Packaging the Function
+
+```bash
+zip -r main.py requirements.txt
+```
+
+---
 
 ## Folder Structure
 ```
@@ -57,6 +85,7 @@ Terraform - Required for defining and deploying infrastructure as code.
 ├── destroy.sh                  # Script to destroy all resources
 └── function.zip                # Source code for Cloud Function
 ```
+---
 
 **Script Descriptions**
 
@@ -70,6 +99,8 @@ destroy.sh:
 
 secure.sh:
  - Runs code quality checks using tflint and security checks using tfsec.
+
+---
 
 **How to Execute**
 
@@ -96,4 +127,6 @@ Update PROJECT_ID and BUCKET_NAME again in destroy.sh and run:
 ```
 ./destroy.sh
 ```
+
+---
 
