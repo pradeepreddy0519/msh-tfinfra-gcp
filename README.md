@@ -28,14 +28,14 @@ GCP Authentication (Using Service Account)
    gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
    ```
 3. Set your GCP project:
-  ```
-  gcloud config set project YOUR_PROJECT_ID
-  ```
+   ```
+   gcloud config set project YOUR_PROJECT_ID
+   ```
 4. Verify:
    ```
    gcloud auth list
    gcloud config list
-  ```   
+   ```   
 
 ## Folder Structure
 ```
@@ -73,24 +73,24 @@ How to Execute
 
 How to Execute
 Step 1: Configure Scripts:
-    Update these variables at the top of each script (apply.sh, destroy.sh, secure.sh):
-   ```
-   PROJECT_ID="your-project-id"
-   BUCKET_NAME="your-unique-bucket-name"
-   ```
+Update these variables at the top of each script (apply.sh, destroy.sh, secure.sh):
+ ```
+ PROJECT_ID="your-project-id"
+ BUCKET_NAME="your-unique-bucket-name"
+ ```
 Step 2: Deploy Infrastructure:
-```
-./apply.sh
-```
+ ```
+ ./apply.sh
+ ```
 Once deployed, wait ~5 minutes and test:
-```
+ ```
 curl -v http://<load_balancer_url>:80
 ```
- Step 3: Run Security & Code Quality Checks:
+Step 3: Run Security & Code Quality Checks:
 ```
 ./secure.sh
 ```
- Step 4: Destroy Infrastructure:
+Step 4: Destroy Infrastructure:
 Update PROJECT_ID and BUCKET_NAME again in destroy.sh and run:
 ```
 ./destroy.sh
