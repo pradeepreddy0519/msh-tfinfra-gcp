@@ -1,24 +1,26 @@
-Prerequisites
-Before getting started, ensure you have the following tools installed and properly configured:
+**Prerequisites**:
 
-Google Cloud Setup:
+Before getting started, ensure the following are completed:
+
+**Google Cloud Setup**:
  1. A GCP Project must be created
  2. You must have Editor or Owner permissions.
  3. Create a service account with the following roles (roles/editor, roles/storage.admin, roles/iam.serviceAccountUser)
  4. Download the JSON key for the service account.
 
-Required Tools
-Google Cloud SDK (gcloud): For authentication and interaction with GCP services.
-Install: https://cloud.google.com/sdk/docs/install
+**Required Tools**:
 
-Terraform: For infrastructure as code (IaC).
-Install: https://developer.hashicorp.com/terraform/downloads
+**Google Cloud SDK (gcloud)**: 
+For authentication and interaction with GCP services. Install: https://cloud.google.com/sdk/docs/install
 
-tflint & tfsec (optional): For code quality and security scanning.
+**Terraform**:
+For infrastructure as code (IaC). Install: https://developer.hashicorp.com/terraform/downloads
+
+**tflint & tfsec** (optional): For code quality and security scanning.
 
 Terraform - Required for defining and deploying infrastructure as code.
 
-GCP Authentication (Using Service Account)
+**GCP Authentication (Using Service Account)**
 1. Export the path to your service account key file:
    ```
    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account.json"
@@ -56,9 +58,9 @@ GCP Authentication (Using Service Account)
 └── function.zip                # Source code for Cloud Function
 ```
 
-Script Descriptions
-apply.sh:
-Provisions for GCP infrastructure, including:
+**Script Descriptions**
+
+apply.sh: Provisions for GCP infrastructure, including:
  - GCS bucket for Terraform state
  - Cloud Functions
  - Load Balancer
@@ -69,9 +71,8 @@ destroy.sh:
 secure.sh:
  - Runs code quality checks using tflint and security checks using tfsec.
 
-How to Execute
+**How to Execute**
 
-How to Execute
 Step 1: Configure Scripts:
 Update these variables at the top of each script (apply.sh, destroy.sh, secure.sh):
  ```
