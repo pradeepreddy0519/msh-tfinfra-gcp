@@ -8,9 +8,34 @@ Google Cloud Setup:
  4. Download the JSON key for the service account.
 
 Required Tools
-Google Cloud SDK (gcloud) - Used to authenticate and interact with GCP services.
+Google Cloud SDK (gcloud): For authentication and interaction with GCP services.
+Install: https://cloud.google.com/sdk/docs/install
+
+Terraform: For infrastructure as code (IaC).
+Install: https://developer.hashicorp.com/terraform/downloads
+
+tflint & tfsec (optional): For code quality and security scanning.
 
 Terraform - Required for defining and deploying infrastructure as code.
+
+GCP Authentication (Using Service Account)
+1. Export the path to your service account key file:
+   ```
+   export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account.json"
+   ```
+2. Authenticate gcloud using the service account:
+   ```
+   gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+   ```
+3. Set your GCP project:
+  ```
+  gcloud config set project YOUR_PROJECT_ID
+  ```
+4. Verify:
+   ```
+   gcloud auth list
+   gcloud config list
+  ```   
 
 ## Folder Structure
 ```
@@ -31,38 +56,43 @@ Terraform - Required for defining and deploying infrastructure as code.
 └── function.zip                # Source code for Cloud Function
 ```
 
-Scripts
+Script Descriptions
+apply.sh:
+Provisions for GCP infrastructure, including:
+ - GCS bucket for Terraform state
+ - Cloud Functions
+ - Load Balancer
 
-apply.sh: This script provisions the GCP infrastructure. It will create a Cloud Storage Bucket to store the Terraform state. Set up Cloud Functions. Create a Load Balancer.
+destroy.sh:
+ - Destroys all created infrastructure. You can use this when cleaning up.
 
-destroy.sh This script will destroy all resources created by deploy.sh. It is useful for cleaning up your GCP project after the infrastructure is no longer needed.
-
-secure.sh This script runs code quality checks with tflint and security vulnerability checks with tfsec on the Terraform code in the project.
+secure.sh:
+ - Runs code quality checks using tflint and security checks using tfsec.
 
 How to Execute
 
-Step 1: Set the Project ID and Bucket Name. For all scripts (apply.sh, destroy.sh, sechure.sh), you will need to specify your project_ID and bucket_name in each script.
-
-Update inside the script PROJECT_ID="your-project-id" and BUCKET_NAME="unique_name"
-
-Step 2: Running the Scripts Deploying the Infrastructure:
-
-Run the apply.sh script to create the infrastructure:
-
+How to Execute
+Step 1: Configure Scripts:
+    Update these variables at the top of each script (apply.sh, destroy.sh, secure.sh):
+   ```
+   PROJECT_ID="your-project-id"
+   BUCKET_NAME="your-unique-bucket-name"
+   ```
+Step 2: Deploy Infrastructure:
+```
 ./apply.sh
-
-Wait for 5 minutes and run the command curl http://load_balancer_url
-
-Destroying the Infrastructure:
-
-When you're done and want to destroy the infrastructure, run the destroy.sh script:
-
-Update inside the script PROJECT_ID="your-project-id" and BUCKET_NAME= "Use statefile bucket name as above input"
-
-./destroy.sh
-
-Running Security and Code Quality Checks:
-
-Run the secure_check.sh script to ensure the Terraform code adheres to quality and security standards:
-
+```
+Once deployed, wait ~5 minutes and test:
+```
+curl -v http://<load_balancer_url>:80
+```
+ Step 3: Run Security & Code Quality Checks:
+```
 ./secure.sh
+```
+ Step 4: Destroy Infrastructure:
+Update PROJECT_ID and BUCKET_NAME again in destroy.sh and run:
+```
+./destroy.sh
+```
+
