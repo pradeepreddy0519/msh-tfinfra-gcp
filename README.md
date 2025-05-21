@@ -41,6 +41,7 @@ Terraform - Required for defining and deploying infrastructure as code.
 3. Authenticate gcloud using the service account:
    ```
    gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+   gcloud config get-value project     # This command will extract the Project_ID
    ```
 4. Set your GCP project:
    ```
