@@ -10,7 +10,7 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket = "bucket_name"
+    bucket = "hello-world-bucket-2025"
     prefix = "terraform/state"
   }
 
