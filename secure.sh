@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_IDE=""
+PROJECT_ID="your_project_id"
 
 # Validate project_name
 if [ -z "$PROJECT_ID" ]; then
@@ -24,9 +24,10 @@ install_tflint() {
   if $IS_WINDOWS; then
     LATEST_TFLINT=$(curl -s https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep 'tag_name' | cut -d\" -f4)
     curl -Lo tflint.zip "https://github.com/terraform-linters/tflint/releases/download/${LATEST_TFLINT}/tflint_windows_amd64.zip"
-    unzip tflint.zip -d tflint-bin
+    mkdir -p tflint-bin
+    unzip -o tflint.zip -d tflint-bin
     chmod +x tflint-bin/tflint.exe
-    mv tflint-bin/tflint.exe /usr/local/bin/tflint
+    export PATH="$PWD/tflint-bin:$PATH"
   elif [[ "$OS_TYPE" == "darwin"* ]]; then
     brew install tflint
   elif [[ "$OS_TYPE" == "linux-gnu"* ]]; then
@@ -40,10 +41,11 @@ install_tfsec() {
 
   if $IS_WINDOWS; then
     LATEST_TFSEC=$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep 'tag_name' | cut -d\" -f4)
-    curl -Lo tfsec.zip "https://github.com/aquasecurity/tfsec/releases/download/${LATEST_TFSEC}/tfsec-windows-amd64.zip"
-    unzip tfsec.zip -d tfsec-bin
+    curl -Lo tfsec.exe "https://github.com/aquasecurity/tfsec/releases/download/${LATEST_TFSEC}/tfsec-windows-amd64.exe"
+    mkdir -p tfsec-bin
+    mv tfsec.exe tfsec-bin/
     chmod +x tfsec-bin/tfsec.exe
-    mv tfsec-bin/tfsec.exe /usr/local/bin/tfsec
+    export PATH="$PWD/tfsec-bin:$PATH"
   elif [[ "$OS_TYPE" == "darwin"* ]]; then
     brew install tfsec
   elif [[ "$OS_TYPE" == "linux-gnu"* ]]; then
@@ -67,7 +69,7 @@ fi
 
 # Paths
 TF_STATEFILE_DIR="./statefile"
-TF_ENV_DIR="./tf-modules"
+TF_ENV_DIR="./modules"
 
 # Run tflint and tfsec on tfstatefile directory
 echo "Running terraform init in tfstatefile directory..."

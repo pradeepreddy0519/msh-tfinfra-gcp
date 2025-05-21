@@ -3,7 +3,8 @@
 set -e
 
 # Set project
-PROJECT_ID=""
+PROJECT_ID="your_project_id"
+PROJECT_ID="Unique_name"
 # created Bucket Name from apply.sh
 BUCKET_NAME=""
 
