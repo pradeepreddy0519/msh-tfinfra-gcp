@@ -120,6 +120,13 @@ secure.sh:
 **How to Execute**
 
 Step 1: Configure Scripts:
+
+Change the permissions for shell script (apply.sh, destroy.sh, secure.sh)
+```
+chmod +x apply.sh
+chmod +x destroy.sh
+chmod +x secure.sh
+```
 Update these variables at the top of each script (apply.sh, destroy.sh, secure.sh):
  ```
  PROJECT_ID="your-project-id"

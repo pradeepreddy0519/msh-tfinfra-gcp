@@ -4,9 +4,8 @@ set -e
 
 # Set project
 PROJECT_ID="your_project_id"
-PROJECT_ID="Unique_name"
 # created Bucket Name from apply.sh
-BUCKET_NAME=""
+BUCKET_NAME="unique_name"
 
 echo "Destroying infrastructure..."
 cd tf-stack
